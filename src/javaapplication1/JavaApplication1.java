@@ -1,8 +1,3 @@
-// NOTE:
-// Code will be optimized and comented in the following days
-// Run with input 50 Lube :D
-
-
 package javaapplication1;
 
 import java.util.Scanner;

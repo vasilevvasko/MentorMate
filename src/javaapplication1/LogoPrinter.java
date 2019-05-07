@@ -5,7 +5,8 @@ package javaapplication1;
 public class LogoPrinter {
     
     // Constructer, takes the size of the logo
-    // Sets values to X,Y and size variables
+    // Sets values to variables X,Y and size,
+    // Calculates starting points
     LogoPrinter(int size) {
         this.size = size;
     setX();
@@ -52,10 +53,11 @@ public class LogoPrinter {
     // Once the n verticle spaces are filed the method moves to the next diagonal space above it and does the same
     // The method stops when it reahes the top of the 2D array
     private void drawUpward(int [] points, int k, int size, char [][] arr) {
-         setRight(points[k]);
-      for (int i = size; i >= 0; i--) {
+        
+         setRight(points[k]);        
+      for (int i = size; i >= 0; i--) { // This for loop is used to move upwards and rightwards (x--, y++)
           arr[i][getRight()] = '*';
-          for (int j = getRight(); j < getRight() + size; j++) {
+          for (int j = getRight(); j < getRight() + size; j++) { // This for loop is used to fill the next n spaces with *
               arr[i][j] = '*';
           }
          setRight(getRight() + 1);
@@ -68,9 +70,9 @@ public class LogoPrinter {
     // The method stops when it reahes the top of the 2D array
     private void drawDownward(int [] points, int k, int size, char [][] arr) {
        setRight(points[k] + size);
-      for (int i = 0; i <= size; i++) {
+      for (int i = 0; i <= size; i++) { // This for loop is used to move downwards and rightwards (x++, y++)
           arr[i][getRight()] = '*';
-          for (int j = getRight(); j < getRight() + size; j++) {
+          for (int j = getRight(); j < getRight() + size; j++) { // This for loop is used to fill the next n spaces with *
               arr[i][j] = '*';
           }
          setRight(getRight() + 1);
@@ -93,8 +95,9 @@ public class LogoPrinter {
       fillArray(this.x, this.y, arr);
       // this loop iterats through the 4 points and draws upwards and downwards for each of them and displays the logo at the end
       for (int k = 0; k < 4; k++) {
-        drawUpward(points, k, size, arr);
-        drawDownward(points ,k, size, arr); 
+        // NOTE: For a better display of how the drawUpward and drawDownward functions work the printLogo function can run with them being comented.
+        drawUpward(points, k, size, arr); // Comment this function and run the code to see a better visual representation of what the function actually does
+        drawDownward(points ,k, size, arr); // Comment this function and run the code to see a better visual representation of what the function actually does
     }
       displayArray(this.x, this.y, arr);
     }
